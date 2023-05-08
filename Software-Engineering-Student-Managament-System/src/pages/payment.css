@@ -1,0 +1,11 @@
+h1
+{
+    color: black;
+}
+
+.placement{
+    position: relative;
+    top: 100px;
+    color: black;
+    padding-left: 390px;
+}

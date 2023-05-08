@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "gasp": "^0.0.2"
+  },
+  "name": "techie-corner",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jathinp2019/Techie-Corner.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jathinp2019/Techie-Corner/issues"
+  },
+  "homepage": "https://github.com/jathinp2019/Techie-Corner#readme",
+  "description": ""
+}

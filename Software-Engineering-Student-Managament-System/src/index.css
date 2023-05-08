@@ -1,0 +1,14 @@
+:root {
+  --header-height: 3rem;
+  --nav-width: 68px;
+
+  --first-color: #21293b;
+  --first-color-alt: #252b3b;
+  --white-color: #252b3b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

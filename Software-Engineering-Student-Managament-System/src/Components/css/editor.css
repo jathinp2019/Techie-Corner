@@ -1,0 +1,24 @@
+.edit
+{
+    background-color:"black";
+    margin-left: 300px;
+    /* height: 75%; */
+    width:75%; 
+}
+.container{
+    text-align: center;
+    display: inline-block;
+  }
+  .typed-out{
+    overflow: hidden;
+    border-right: .15em solid black;
+    white-space: nowrap;
+    animation: 
+    typing 2s steps(10, end) forwards;
+    font-size: 50px;
+    width: 30%;
+  }
+  @keyframes typing {
+    from { width: 0}
+    to { width: 150% }
+  }
