@@ -4,8 +4,8 @@ h1
 }
 
 .placement{
-    position: relative;
     top: 100px;
     color: black;
     padding-left: 390px;
+    padding-top: 50px;
 }
