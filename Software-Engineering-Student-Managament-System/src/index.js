@@ -13,7 +13,8 @@ import CartProvider from './PaymentContext';
 import Quiz from './pages/Quiz.js'
 import Box  from './Components/Box.js';
 import Editor  from './Components/Editor.js';
-
+import Adminreg from './pages/Adminadduser';
+import Loginpage from './pages/login_component';
 
 import {
   createBrowserRouter,
@@ -52,7 +53,14 @@ const router = createBrowserRouter([
     path: "editor",
     element: <Editor />,
   },
-
+  {
+    path: "adminpage",
+    element: <Adminreg />,
+  },
+  {
+    path: "login",
+    element: <Loginpage />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

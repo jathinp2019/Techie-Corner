@@ -25,6 +25,11 @@ import React , { useState, useEffect } from "react"
   const handleImageClick = () => {
     setShowDropdown(!showDropdown);
   };
+
+  const logOut =() => {
+    window.localStorage.clear();
+    window.location.href = "./login";
+  }
   
 // let name=''
 // console.log('dogsss',data[2])
@@ -117,9 +122,9 @@ import React , { useState, useEffect } from "react"
                   </a>
                 </li>
                 <li>
-                  <a href="#" style={{color:"black"}}>
-                    Logout <IoLogOut></IoLogOut>
-                  </a>
+                
+                    <button onClick={logOut} style={{color:"black"}}>Logout <IoLogOut></IoLogOut></button>
+        
                 </li>
               </ul>
             </div>
