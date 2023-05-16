@@ -61,7 +61,7 @@ const router = createBrowserRouter([
   },
   {
     path: "login",
-    element: isLoggedIn === "true" ? <Loginpage /> : <App /> ,
+    element: isLoggedIn === "true" ? <App /> : <Loginpage /> ,
   },
 ])
 
