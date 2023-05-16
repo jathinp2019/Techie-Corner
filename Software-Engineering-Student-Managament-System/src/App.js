@@ -1,4 +1,5 @@
 import "./App.css";
+import { useEffect,useState } from "react";
 import MainLayout from "./Layout/MainLayout";
 import Preloader from "./Components/Preloader.js";
 
@@ -7,6 +8,7 @@ import Box from "./Components/Box.js";
 import Course from "./Components/Course.js";
 
 function App() {
+    
   return (
     <>
     < Preloader />

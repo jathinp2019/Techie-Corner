@@ -10,6 +10,25 @@ import Axios from "axios";
 import React , { useState, useEffect } from "react"
 // function Header() {
   const Header=() => {
+    const [userData, setUserData] = useState("")
+    useEffect(() => {
+      fetch("http://localhost:4000/userdata",{
+        method: "POST",
+        crossDomain: true,
+        headers: {
+            "content-type": "application/json",
+            Accept:"application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+            token: window.localStorage.getItem("token"),
+        }),
+    }).then((res) => res.json())
+    .then((data) => {
+        console.log(data,"UserData")
+        setUserData(data.data)
+    })
+  },[])
     const [data,setData]=useState("");
   
     const getData=async() => {
@@ -31,12 +50,15 @@ import React , { useState, useEffect } from "react"
     window.location.href = "./login";
   }
   
+
 // let name=''
 // console.log('dogsss',data[2])
 
 
 // console.log("type ",typeof name)
 // let image=data[0].image
+
+
 
   return (
     
@@ -83,8 +105,8 @@ import React , { useState, useEffect } from "react"
             display: "inline-block",
           }}
         >
-         {/* {data[0][0].name} */}
-         {data[2]}
+          <h2>{userData.fname}</h2>
+         {/* {data[2]} */}
         
         </span>
         <div style={{ position: "relative" }}>

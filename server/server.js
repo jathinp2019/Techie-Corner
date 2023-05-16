@@ -97,16 +97,18 @@ app.post('/login-user', async (req, res) => {
 app.post('/userdata', async (req, res) => {
     const { token } = req.body
     try {
+        
         const user = jwt.verify(token, JWT_SECRET)
+        console.log(user)
         const useremail = user.email
-        user.findOne({ email: useremail }).then((data) => {
+        User.findOne({ email: useremail }).then((data) => {
             res.send({ status: "ok", data: data })
         }).catch((err) => {
             res.send({ status: "error", error: err })
         })
 
     } catch (error) {
-
+        
     }
 })
 app.listen(4000, () => console.log("Listening on port 4000"))

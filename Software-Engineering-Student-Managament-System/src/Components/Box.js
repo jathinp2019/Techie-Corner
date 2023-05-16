@@ -24,8 +24,8 @@ const Box = (props) => {
   // console.log(data)
   return (
     <MainLayout >
-      <div class='box1' style={{ background: "283042" }}>
-        <div class='box2' style={{ backgroundColor: '#fff' }}>
+      <div  className='box1' style={{ background: "283042" }}>
+        <div  className='box2' style={{ backgroundColor: '#fff' }}>
           <span>
             <h1 style={{ color: '#000', textAlign: 'center' }}>Payments</h1>
             <h1 style={{ fontSize: 50 }}>
@@ -64,7 +64,7 @@ const Box = (props) => {
           </span>
         </div>
 
-        <div class='box3' style={{ backgroundColor: '#ED6275' }}>
+        <div  className='box3' style={{ backgroundColor: '#ED6275' }}>
           <span>
             <h1 style={{ textAlign: 'right', marginRight: 14 }}>Attendance</h1>
             {/* {data} */}
@@ -72,20 +72,20 @@ const Box = (props) => {
             <br></br>
             <p style={{ marginTop: -27 }}>
               <span style={{ fontWeight: '500', marginTop: -10 }}>129</span>{' '}
-              Classes Attended<br></br>
-              <span style={{ fontWeight: '500' }}>168</span> Classes Conducted
+               classes Attended<br></br>
+              <span style={{ fontWeight: '500' }}>168</span>  classes Conducted
             </p>
           </span>
         </div>
 
-        <div class='gral' style={{ backgroundColor: '#00d285' }}>
-          <iframe className='frame' src="https://charts.mongodb.com/charts-software-engineering-proj-czwdi/embed/charts?id=6444b048-81d6-4d8b-8df4-427b6851a73c&maxDataAge=3600&theme=light&autoRefresh=true"></iframe>
+        <div  className='gral' style={{ backgroundColor: '#00d285' }}>
+          <iframe  className='frame' src="https://charts.mongodb.com/charts-software-engineering-proj-czwdi/embed/charts?id=6444b048-81d6-4d8b-8df4-427b6851a73c&maxDataAge=3600&theme=light&autoRefresh=true"></iframe>
 
         </div>
-        <div class='lb' style={{ backgroundColor: '#cc89fc' }}>
+        <div  className='lb' style={{ backgroundColor: '#cc89fc' }}>
           <span>
             <h1 style={{ textAlign: 'center' }}>Announcements</h1>
-            <div className='tab'>
+            <div  className='tab'>
               <table>
                 <tr>
                   <td>{Subject[0]} </td>

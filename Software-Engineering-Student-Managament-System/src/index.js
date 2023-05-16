@@ -16,11 +16,13 @@ import Editor  from './Components/Editor.js';
 import Adminreg from './pages/Adminadduser';
 import Loginpage from './pages/login_component';
 
+
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 
+const isLoggedIn = window.localStorage.getItem("loggedIn");
 
 
 const router = createBrowserRouter([
@@ -59,9 +61,9 @@ const router = createBrowserRouter([
   },
   {
     path: "login",
-    element: <Loginpage />,
+    element: isLoggedIn === "true" ? <Loginpage /> : <App /> ,
   },
-]);
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
