@@ -64,7 +64,7 @@ const Sidebar = () => {
                     <FaBookOpen style={style} />
                     <span className="nav-link-name">Course</span>
                   </Link>
-                  <Link to="/editor" className="nav-link">
+                  <Link to="/edit" className="nav-link">
                     <AiFillEdit style={style} />
                     <span className="nav-link-name">Edit</span>
                   </Link>

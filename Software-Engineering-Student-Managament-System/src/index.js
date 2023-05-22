@@ -8,67 +8,62 @@ import PaymentPage from './pages/PaymentPage';
 import Cancel from './pages/Cancel';
 import Success from './pages/Success';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import CartProvider from './PaymentContext';
-import Quiz from './pages/Quiz.js'
-import Box  from './Components/Box.js';
-import Editor  from './Components/Editor.js';
+import Quiz from './pages/Quiz.js';
+import Box from './Components/Box.js';
+import Edit from './Components/Edit.js';
 import Adminreg from './pages/Adminadduser';
 import Loginpage from './pages/login_component';
 
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-
-const isLoggedIn = window.localStorage.getItem("loggedIn");
-
+const isLoggedIn = window.localStorage.getItem('loggedIn');
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
   },
   {
-    path: "payment",
-    element: <PaymentPage/>,
+    path: 'payment',
+    element: <PaymentPage />,
   },
   {
-    path: "course",
-    element: < Quiz/>,
+    path: 'course',
+    element: <Quiz />,
   },
   {
-    path: "dashboard",
-    element: < Box />,
+    path: 'dashboard',
+    element: <Box />,
   },
 
   {
-    path: "success",
-    element: <Success/>,
+    path: 'success',
+    element: <Success />,
   },
   {
-    path: "cancel",
-    element: <Cancel/>,
+    path: 'cancel',
+    element: <Cancel />,
   },
   {
-    path: "editor",
-    element: <Editor />,
+    path: 'edit',
+    element: <Edit />,
   },
   {
-    path: "adminpage",
+    path: 'adminpage',
     element: <Adminreg />,
   },
   {
-    path: "login",
-    element: isLoggedIn === "true" ? <App /> : <Loginpage /> ,
+    path: 'login',
+    element: isLoggedIn === 'true' ? <App /> : <Loginpage />,
   },
-])
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <CartProvider>
-  <RouterProvider router={router}></RouterProvider>
+    <RouterProvider router={router}></RouterProvider>
   </CartProvider>
 );
 
