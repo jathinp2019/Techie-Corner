@@ -18,12 +18,12 @@ import Loginpage from './pages/login_component';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-const isLoggedIn = window.localStorage.getItem('loggedIn');
+const isLoggedIn = window.localStorage.getItem('LoggedIn');
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: isLoggedIn === 'true' ? <App /> : <Loginpage />,
   },
   {
     path: 'payment',
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <Box />,
+    element: <App />,
   },
 
   {
@@ -53,10 +53,6 @@ const router = createBrowserRouter([
   {
     path: 'adminpage',
     element: <Adminreg />,
-  },
-  {
-    path: 'login',
-    element: isLoggedIn === 'true' ? <App /> : <Loginpage />,
   },
 ]);
 

@@ -47,7 +47,7 @@ import React , { useState, useEffect } from "react"
 
   const logOut =() => {
     window.localStorage.clear();
-    window.location.href = "./login";
+    window.location.href = "./";
   }
   
 

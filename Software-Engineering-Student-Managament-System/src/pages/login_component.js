@@ -240,7 +240,7 @@ export default class Loginpage extends Component {
 					window.localStorage.setItem("token", data.data)
 					window.localStorage.setItem("LoggedIn", true)
 
-					window.location.href = "./"
+					window.location.href = "./dashboard"
 				}
 			})
 	}
