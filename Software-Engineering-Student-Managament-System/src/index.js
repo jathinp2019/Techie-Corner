@@ -11,6 +11,7 @@ import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import CartProvider from './PaymentContext';
 import Quiz from './pages/Quiz.js';
+import Course from './pages/Course.js';
 import Box from './Components/Box.js';
 import Edit from './Components/Edit.js';
 import Adminreg from './pages/Adminadduser';
@@ -30,14 +31,13 @@ const router = createBrowserRouter([
     element: <PaymentPage />,
   },
   {
-    path: 'course',
-    element: <Quiz />,
+    path: 'quiz',
+    element: < Quiz/>,
   },
   {
-    path: 'dashboard',
-    element: <App />,
+    path: 'course',
+    element: < Course/>,
   },
-
   {
     path: 'success',
     element: <Success />,
