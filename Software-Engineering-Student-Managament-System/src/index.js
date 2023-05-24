@@ -13,7 +13,7 @@ import CartProvider from './PaymentContext';
 import Quiz from './pages/Quiz.js'
 import Box  from './Components/Box.js';
 import Editor  from './Components/Editor.js';
-
+import Course from './pages/Course.js';
 
 import {
   createBrowserRouter,
@@ -31,8 +31,12 @@ const router = createBrowserRouter([
     element: <PaymentPage/>,
   },
   {
-    path: "course",
+    path: "quiz",
     element: < Quiz/>,
+  },
+  {
+    path: "course",
+    element: < Course/>,
   },
   {
     path: "dashboard",

@@ -38,19 +38,14 @@
   
   .btn:hover, .dropdown:hover .btn {
     background-color: #0b7dda;
-  } */
+  } 
 .drop{
   margin-left:1000px;
   margin-top:500px;
 }
 
 
-
-
-
-
-
-/* .btn {
+.btn {
     background-color: #2196F3;
     color: white;
     padding: 16px;
@@ -90,15 +85,32 @@
   .btn:hover, .dropdown:hover .btn {
     background-color: #0b7dda;
   } */
-  .drop{
-    margin-left:1000px;
-    margin-top:500px;
+
+  
+  .courses{
+    background-color: #094a5b;
+    padding-left: 5%;
+    padding-bottom: 27.4%;
+    height: 100%;
+    overflow: hidden
+  } 
+  
+  .course-list-container {
+    text-align: center;
+    margin-top: 50px;
   }
   
+  /* .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  } */
   
-  
-  
-  
-  
-  
+  .button-container {
+    display: flex;
+    flex-direction: column;
+  }
 
+  .button-container button {
+    margin: 2%;
+  } 

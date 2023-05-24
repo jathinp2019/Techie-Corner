@@ -47,6 +47,13 @@ def addItem():
     collection_name.insert_one(item)
     return "success"
 
+@app.route('/course_ids', methods=['GET', 'POST'])
+def get_course_ids():
+    dbname = get_database()
+    collection_name = dbname["quiz"]
+    course_ids = collection_name.distinct("course_id")
+    return jsonify(course_ids)
+
 @app.route('/create', methods=['GET', 'POST'])
 def create_db():
     dbname = get_database()
