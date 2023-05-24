@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom'; // Import useParams
 import '../Components/css/quiz.css';
 import MainLayout from '../Layout/MainLayout';
 
@@ -8,8 +9,12 @@ function Quiz() {
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const courseId  = searchParams.get("course_id"); // Get the courseId from the URL
+
   useEffect(() => {
-    fetch("http://localhost:5000/data?course_id=19CSE303")
+    fetch(`http://localhost:5000/data?course_id=${courseId}`) // Use the courseId in the fetch URL
       .then((res) => res.json())
       .then((data) => {
         const fetchedQuestions = data.map((question) => {
