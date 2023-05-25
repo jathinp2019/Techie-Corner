@@ -1,11 +1,35 @@
-h1
-{
-    color: black;
-}
-
 .placement{
     top: 100px;
     color: black;
     padding-left: 390px;
     padding-top: 50px;
 }
+.wordart {
+    position: relative;
+    display: inline-block;
+    .preview {
+      margin: 0 0 2rem;
+      padding: 2rem;
+    }
+  }
+  
+  h1 {
+    font-size: 9vmin;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  section {
+    position: relative;
+    &.style-one {
+      .wordart {
+        transform: scale(1.05, 1.25);
+        .preview {
+          font-weight: 900;
+          color: transparent;
+          -webkit-text-fill-color: transparent;
+          -webkit-text-stroke: 1px #f7f7f7;
+        }
+      }
+    }
+  }

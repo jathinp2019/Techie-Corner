@@ -20,15 +20,15 @@ function PaymentPage() {
   const productscount = cart.items.reduce((acc, item) => acc + item.quantity, 0)
 
   const checkout = async () => {
-    await fetch('http://localhost:4000/checkout',{
+    await fetch('http://localhost:4000/checkout', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify({items: cart.items})
-    }).then((response) =>{return response.json()}
-    ).then((response) =>{
-      if(response.url){
+      body: JSON.stringify({ items: cart.items })
+    }).then((response) => { return response.json() }
+    ).then((response) => {
+      if (response.url) {
         window.location.assign(response.url)
       }
     }
@@ -40,7 +40,7 @@ function PaymentPage() {
 
         <div className="placement">
           <div align='Right' className='p-4'>
-            <Button onClick={handleShow}>Cart {productscount} Items</Button>
+            <Button style={{ backgroundColor: '#5c72ad' }} onClick={handleShow}>Cart {productscount} Items</Button>
           </div>
 
           <Modal show={show} onHide={handleClose}>
@@ -50,22 +50,27 @@ function PaymentPage() {
             <Modal.Body>
               {productscount > 0 ?
                 <>
-                  {cart.items.map((currentproduct , idx) => 
-                    (
-                      <CartProducts key={idx} id={currentproduct.id} quantity={currentproduct.quantity}></CartProducts>
-                    )
+                  {cart.items.map((currentproduct, idx) =>
+                  (
+                    <CartProducts key={idx} id={currentproduct.id} quantity={currentproduct.quantity}></CartProducts>
+                  )
                   )}
                   <h1> Total : {cart.getTotalCost()}</h1>
                   <Button variant='success' onClick={checkout}>Checkout</Button>
                 </>
                 :
-                <h1>Cart is Empty</h1>
+                <h1 style={{color: 'black'}}>Cart is Empty</h1>
               }
             </Modal.Body>
           </Modal>
 
           <Container>
-            <h1 align='Center' className="p-3">Welcome to the Payments Page</h1>
+            
+            <section class="style-one">
+              <div class="wordart">
+                <h1 class="preview" data-content="CodePen">Welcome To Payments Page</h1>
+              </div>
+            </section>
             <Row xs={1} md={3} className='g-4'>
               {ProductArray.map((product, idx) => (
                 <Col align='center' key={idx}>
