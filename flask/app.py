@@ -54,6 +54,15 @@ def get_course_ids():
     course_ids = collection_name.distinct("course_id")
     return jsonify(course_ids)
 
+@app.route('/updateMarks', methods=['GET', 'POST'])
+def update_marks():
+    name = request.args.get('name')
+    marks = request.args.get('marks')
+    dbname = get_database()
+    collection_name = dbname["student_marks"]
+    collection_name.update_one({'name': name}, {'$set': {'marks': marks}}, upsert=True)
+    return "Marks updated successfully"
+
 @app.route('/create', methods=['GET', 'POST'])
 def create_db():
     dbname = get_database()
