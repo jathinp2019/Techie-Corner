@@ -4,7 +4,7 @@ import { Triangle } from  'react-loader-spinner'
 
 const Loading = () => {
   return (
-    <div className="loading" style={{width:"100%",height:"100vh",alignItems:"center",display:"flex",justifyContent:"center",background:"black"}}>
+    <div className="loading" style={{width:"200vh",height:"100vh",alignItems:"center",display:"flex",justifyContent:"center",background:"black"}}>
      <Triangle
   
   height="200"

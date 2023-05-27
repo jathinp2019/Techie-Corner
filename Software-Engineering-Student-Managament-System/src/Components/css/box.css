@@ -4,7 +4,9 @@
   width: 2000px;
   height: 910px;
   /* height: 1000px; */
-  background-color: #283042;
+  background-color: #e71972 ;
+  
+  
   display: grid;
   grid-template-columns: 500px 500px 500px;
   grid-template-rows: 350px 350px;

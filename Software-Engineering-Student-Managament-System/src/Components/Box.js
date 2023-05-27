@@ -26,11 +26,11 @@ const Box = (props) => {
   return (
     <MainLayout >
       
-      <div  className='box1' style={{ background: "transparent" }}>
+      <div  className='box1' style={{ background: "transparent"}}>
         
         <div  className='box2' style={{ backgroundColor: 'transparent',boxShadow: "0px 5px 10px 0px rgba(0, 0, 0, 0.5)" ,color:'white'}}>
           <span>
-            <h1 style={{ color: 'white', textAlign: 'center' }}>Payments</h1>
+            <h1 style={{ color: '#011409', textAlign: 'center' }}>Payments</h1>
             <h1 style={{ fontSize: 50 }}>
               <FaRupeeSign
                 style={{ fontSize: 40, color: 'white', fontWeight: 700 }}
@@ -69,7 +69,7 @@ const Box = (props) => {
 
         <div  className='box3' style={{ backgroundColor: '#transparent',boxShadow: "0px 5px 10px 0px rgba(0, 0, 0, 0.5)",color:'white' }}>
           <span>
-            <h1 style={{ textAlign: 'right', marginRight: 14,color:'white' }}>Attendance</h1>
+            <h1 style={{ textAlign: 'right', marginRight: 14,color:'#011409' }}>Attendance</h1>
             {/* {data} */}
             <CircularProgressBar></CircularProgressBar>
             <br></br>
@@ -88,7 +88,7 @@ const Box = (props) => {
         </div>
         <div  className='lb' style={{ backgroundColor: '#transparent' ,boxShadow: "0px 5px 10px 0px rgba(0, 0, 0, 0.5)",color:'white'}}>
           <span>
-            <h1 style={{ textAlign: 'center',color:'white' }}>Announcements</h1>
+            <h1 style={{ textAlign: 'center',color:'#011409' }}>Announcements</h1>
             <div  className='tab'>
               <table>
                 <tr>
