@@ -1,62 +1,39 @@
-import React, { useState } from 'react';
-// import SpinningCube from './SpinningCube';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom'; // Import useParams
 import '../Components/css/quiz.css';
 import MainLayout from '../Layout/MainLayout';
 
-const questions = [
-  {
-    question: "What is the capital of France?",
-   
-    answers: [
-      { text: "Paris", correct: true },
-      { text: "Berlin", correct: false },
-      { text: "London", correct: false },
-      { text: "Madrid", correct: false },
-    ],
-    
-  },
-  {
-    question: "What is the largest planet in our solar system?",
-    answers: [
-      { text: "Saturn", correct: false },
-      { text: "Jupiter", correct: true },
-      { text: "Neptune", correct: false },
-      { text: "Uranus", correct: false },
-    ],
-  },
-  {
-    question: "Who is the creator of the 'Harry Potter' series?",
-    answers: [
-      { text: "Stephenie Meyer", correct: false },
-      { text: "Suzanne Collins", correct: false },
-      { text: "J.K. Rowling", correct: true },
-      { text: "Veronica Roth", correct: false },
-    ],
-  },
-  {
-    question: "What is the largest mammal in the world?",
-    answers: [
-      { text: "African Elephant", correct: false },
-      { text: "Blue Whale", correct: true },
-      { text: "Hippopotamus", correct: false },
-      { text: "Giraffe", correct: false },
-    ],
-  },
-  {
-    question: "What is the highest mountain in the world?",
-    answers: [
-      { text: "K2", correct: false },
-      { text: "Kangchenjunga", correct: false },
-      { text: "Lhotse", correct: false },
-      { text: "Mount Everest", correct: true },
-    ],
-  },
-  // Add more questions here
-];
 function Quiz() {
+  const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const courseId  = searchParams.get("course_id"); // Get the courseId from the URL
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/data?course_id=${courseId}`) // Use the courseId in the fetch URL
+      .then((res) => res.json())
+      .then((data) => {
+        const fetchedQuestions = data.map((question) => {
+          return {
+            question: question.question,
+            answers: [
+              { text: question.answers[0].text, correct: question.answers[0].correct },
+              { text: question.answers[1].text, correct: question.answers[1].correct },
+              { text: question.answers[2].text, correct: question.answers[2].correct },
+              { text: question.answers[3].text, correct: question.answers[3].correct },
+            ],
+          };
+        });
+        setQuestions(fetchedQuestions);
+      })
+      .catch((error) => {
+        console.error("Error fetching questions:", error);
+      });
+  }, []);
 
   const handleAnswerButtonClick = (isCorrect) => {
     if (isCorrect) {
@@ -81,7 +58,8 @@ function Quiz() {
   };
 
   return (
-    < MainLayout>
+    <MainLayout>
+
     <div className="quiz">
       {showScore ? (
         <div className="score-section">
@@ -99,7 +77,7 @@ function Quiz() {
             <button onClick={handleExitButtonClick}>Exit Quiz</button>
           </div>
         </div>
-      ) : (
+      ) : questions.length > 0 ? (
         <>
           <div className="question-section">
             <div className="question-count">
@@ -120,9 +98,12 @@ function Quiz() {
             ))}
           </div>
         </>
+      ) : (
+        <div>Loading questions...</div>
       )}
     </div>
     </MainLayout>
+    
   );
 }
 
