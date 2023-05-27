@@ -6,6 +6,7 @@ import Sidebar from "./Components/Sidebar";
 import Box from "./Components/Box.js";
 import Course from "./Components/Course.js";
 import Loading from './Components/Loading.js';
+import ProfilePage from "./pages/Profilepage";
 
 
 const App = () => {
