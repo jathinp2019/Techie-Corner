@@ -4,10 +4,32 @@ import './css/edit.css';
 import React, { useEffect } from 'react';
 
 function Edit() {
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [dob, setDob] = useState('');
+
+
+  useEffect(() => {
+    const fetchDocument = async () => {
+      try {
+        const response = await fetch('http://localhost:7000');
+        const document = await response.json();
+        console.log('Retrieved Document:', document);
+
+        // Update the component state with the received data
+        setName(document.name);
+        setEmail(document.email);
+        setAddress(document.address);
+        setDob(document.dob);
+      } catch (error) {
+        console.error('Error retrieving document:', error);
+      }
+    };
+
+    fetchDocument();
+  }, []);
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     let result = await fetch('http://localhost:5000/register', {
@@ -24,7 +46,7 @@ function Edit() {
       setEmail('');
       setName('');
       setAddress('');
-      setDob('');
+      setDob(''); 
     }
   };
   return (

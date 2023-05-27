@@ -10,6 +10,8 @@ import { useState, useContext } from 'react'
 import CartProvider from '../PaymentContext'
 import { CartContext } from '../PaymentContext'
 import CartProducts from '../Components/CartProducts'
+import Backgroundvideo from "../Components/images/Backgroundvideo.mp4"
+
 
 function PaymentPage() {
   const cart = useContext(CartContext)
@@ -36,8 +38,12 @@ function PaymentPage() {
   }
   return (
     <>
+    
+     
+    
+      
       <MainLayout>
-
+      
         <div className="placement">
           <div align='Right' className='p-4'>
             <Button onClick={handleShow}>Cart {productscount} Items</Button>

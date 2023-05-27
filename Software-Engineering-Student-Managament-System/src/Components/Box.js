@@ -4,6 +4,7 @@ import { FaRupeeSign } from 'react-icons/fa';
 import MainLayout from '../Layout/MainLayout';
 import Axios from "axios";
 import React, { useState, useEffect } from "react"
+import Backgroundvideo from "./images/Backgroundvideo.mp4"
 
 
 const Box = (props) => {
@@ -24,26 +25,28 @@ const Box = (props) => {
   // console.log(data)
   return (
     <MainLayout >
-      <div  className='box1' style={{ background: "283042" }}>
-        <div  className='box2' style={{ backgroundColor: '#fff' }}>
+      
+      <div  className='box1' style={{ background: "transparent" }}>
+        
+        <div  className='box2' style={{ backgroundColor: 'transparent',boxShadow: "0px 5px 10px 0px rgba(0, 0, 0, 0.5)" ,color:'white'}}>
           <span>
-            <h1 style={{ color: '#000', textAlign: 'center' }}>Payments</h1>
+            <h1 style={{ color: 'white', textAlign: 'center' }}>Payments</h1>
             <h1 style={{ fontSize: 50 }}>
               <FaRupeeSign
-                style={{ fontSize: 40, color: 'black', fontWeight: 700 }}
+                style={{ fontSize: 40, color: 'white', fontWeight: 700 }}
               ></FaRupeeSign>
-              <span style={{ fontSize: 40, color: 'black', fontWeight: 700 }}>
+              <span style={{ fontSize: 40, color: 'white', fontWeight: 700 }}>
                 300
               </span>
             </h1>
             <p style={{ fontSize: 25 }}>wallet balance</p>
             <p style={{ fontSize: 25 }}>
               <FaRupeeSign
-                style={{ fontSize: 40, color: 'black', fontWeight: 700 }}
+                style={{ fontSize: 40, color: 'white', fontWeight: 700 }}
               ></FaRupeeSign>
               <span>
                 {' '}
-                <span style={{ fontSize: 40, color: 'black', fontWeight: 700 }}>
+                <span style={{ fontSize: 40, color: 'white', fontWeight: 700 }}>
                   300{' '}
                 </span>{' '}
                 Previous Month Expenditure
@@ -51,11 +54,11 @@ const Box = (props) => {
             </p>
             <p style={{ fontSize: 25 }}>
               <FaRupeeSign
-                style={{ fontSize: 40, color: 'black', fontWeight: 700 }}
+                style={{ fontSize: 40, color: 'white', fontWeight: 700 }}
               ></FaRupeeSign>
               <span>
                 {' '}
-                <span style={{ fontSize: 40, color: 'black', fontWeight: 700 }}>
+                <span style={{ fontSize: 40, color: 'white', fontWeight: 700 }}>
                   300{' '}
                 </span>{' '}
                 Most Recent Transaction
@@ -64,9 +67,9 @@ const Box = (props) => {
           </span>
         </div>
 
-        <div  className='box3' style={{ backgroundColor: '#ED6275' }}>
+        <div  className='box3' style={{ backgroundColor: '#transparent',boxShadow: "0px 5px 10px 0px rgba(0, 0, 0, 0.5)",color:'white' }}>
           <span>
-            <h1 style={{ textAlign: 'right', marginRight: 14 }}>Attendance</h1>
+            <h1 style={{ textAlign: 'right', marginRight: 14,color:'white' }}>Attendance</h1>
             {/* {data} */}
             <CircularProgressBar></CircularProgressBar>
             <br></br>
@@ -78,13 +81,14 @@ const Box = (props) => {
           </span>
         </div>
 
-        <div  className='gral' style={{ backgroundColor: '#00d285' }}>
-          <iframe  className='frame' src="https://charts.mongodb.com/charts-software-engineering-proj-czwdi/embed/charts?id=6444b048-81d6-4d8b-8df4-427b6851a73c&maxDataAge=3600&theme=light&autoRefresh=true"></iframe>
+        <div  className='gral' style={{ backgroundColor: '#transparent',boxShadow: "0px 5px 10px 0px rgba(0, 0, 0, 0.5)",color:'white' }}>
+        <iframe className="frame" src="https://charts.mongodb.com/charts-software-engineering-proj-czwdi/embed/charts?id=6444b048-81d6-4d8b-8df4-427b6851a73c&maxDataAge=3600&theme=dark&autoRefresh=true"></iframe>
+
 
         </div>
-        <div  className='lb' style={{ backgroundColor: '#cc89fc' }}>
+        <div  className='lb' style={{ backgroundColor: '#transparent' ,boxShadow: "0px 5px 10px 0px rgba(0, 0, 0, 0.5)",color:'white'}}>
           <span>
-            <h1 style={{ textAlign: 'center' }}>Announcements</h1>
+            <h1 style={{ textAlign: 'center',color:'white' }}>Announcements</h1>
             <div  className='tab'>
               <table>
                 <tr>
