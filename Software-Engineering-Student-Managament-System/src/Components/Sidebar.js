@@ -37,36 +37,34 @@ const Sidebar = () => {
               <div className="header-toggle" onClick={() => setShow(!show)}>
                 <div className="ham">
                   <GiHamburgerMenu />
+
                 </div>
+                <br></br>
                 <div className="nav-list">
                   <Link to="/dashboard" className="nav-link active">
                     <MdSpaceDashboard style={style} />
-                    <span className="nav-link-name">Dashboard</span>
+                    <span className="nav-link-name">Home</span>
                   </Link>
-                  <Link to="/hotel" className="nav-link">
+                  <br></br>
+                  <Link to="/profile" className="nav-link">
                     <CgProfile style={style} />
                     <span className="nav-link-name">Profile</span>
                   </Link>
-                  <Link to="/gallery" className="nav-link">
-                    <MdAssessment style={style} />
-                    <span className="nav-link-name">Marks</span>
-                  </Link>
+                  <br></br>
                   <Link to="/payment" className="nav-link">
                     <IoIosWallet style={style} />
                     <span className="nav-link-name">Payment</span>
                   </Link>
-                  <Link to="/gallery" className="nav-link">
-                    <BsPersonCheckFill style={style} />
-                    <span className="nav-link-name">Attendance</span>
-                  </Link>
+                  <br></br>
 
                   <Link to="/course" className="nav-link">
                     <FaBookOpen style={style} />
                     <span className="nav-link-name">Course</span>
                   </Link>
+                  <br></br>
                   <Link to="/edit" className="nav-link">
                     <AiFillEdit style={style} />
-                    <span className="nav-link-name">Edit</span>
+                    <span className="nav-link-name">Editor</span>
                   </Link>
                 </div>
               </div>

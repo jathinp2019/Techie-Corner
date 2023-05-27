@@ -1,122 +1,113 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MainLayout from '../Layout/MainLayout';
 import './css/edit.css';
-import React, { useEffect } from 'react';
 
 function Edit() {
-
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [dob, setDob] = useState('');
 
-
   useEffect(() => {
-    const fetchDocument = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:7000');
-        const document = await response.json();
-        console.log('Retrieved Document:', document);
+        const response = await fetch('http://localhost:5000/user');
+        const userData = await response.json();
 
-        // Update the component state with the received data
-        setName(document.name);
-        setEmail(document.email);
-        setAddress(document.address);
-        setDob(document.dob);
+        setName(userData.name);
+        setEmail(userData.email);
+        setAddress(userData.address);
+        setDob(userData.dob);
       } catch (error) {
-        console.error('Error retrieving document:', error);
+        console.error('Error fetching user data:', error);
       }
     };
 
-    fetchDocument();
+    fetchData();
   }, []);
+
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    let result = await fetch('http://localhost:5000/register', {
-      method: 'post',
-      body: JSON.stringify({ name, email, address, dob }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    result = await result.json();
-    console.warn(result);
-    if (result) {
-      alert('Data saved succesfully');
-      setEmail('');
-      setName('');
-      setAddress('');
-      setDob(''); 
+    try {
+      const response = await fetch('http://localhost:5000/register', {
+        method: 'post',
+        body: JSON.stringify({ name, email, address, dob }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const result = await response.json();
+      console.warn(result);
+      if (result) {
+        alert('Data saved successfully');
+      }
+    } catch (error) {
+      console.error('Error updating user data:', error);
+      alert('Something went wrong');
     }
   };
+
   return (
     <>
-      
       <MainLayout>
-        <div class='formbold-form-wrapper'>
-          <form action=''>
-            <div class='formbold-input-flex'>
+        <div className='formbold-form-wrapper'>
+          <form onSubmit={handleOnSubmit}>
+            <div className='formbold-input-flex'>
               <div>
                 <input
                   type='text'
                   placeholder='Jane'
-                  class='formbold-form-input'
+                  className='formbold-form-input'
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
-                <label class='formbold-form-label'> Name </label>
+                <label className='formbold-form-label'> Name </label>
               </div>
               <div>
                 <input
                   type='date'
                   placeholder='Cooper'
-                  class='formbold-form-input'
+                  className='formbold-form-input'
                   value={dob}
                   onChange={(e) => setDob(e.target.value)}
                 />
-                <label class='formbold-form-label'> Dob </label>
+                <label className='formbold-form-label'> Dob </label>
               </div>
             </div>
 
-            <div class='formbold-input-flex'>
+            <div className='formbold-input-flex'>
               <div>
                 <input
                   type='email'
                   placeholder='jhon@mail.com'
-                  class='formbold-form-input'
+                  className='formbold-form-input'
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <label class='formbold-form-label'> Mail </label>
+                <label className='formbold-form-label'> Mail </label>
               </div>
               <div>
                 <input
                   type='text'
                   placeholder='(319) 555-0115'
-                  class='formbold-form-input'
+                  className='formbold-form-input'
                 />
-                <label class='formbold-form-label'> Phone </label>
+                <label className='formbold-form-label'> Phone </label>
               </div>
             </div>
 
-            <div class='formbold-textarea'>
+            <div className='formbold-textarea'>
               <textarea
                 rows='6'
                 placeholder='enter your address'
-                class='formbold-form-input'
+                className='formbold-form-input'
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
               ></textarea>
-              <label class='formbold-form-label'> Address </label>
+              <label className='formbold-form-label'> Address </label>
             </div>
 
-            {/* <div class='formbold-input-file'>
-              <label class='formbold-input-label'>
-                Upload Photo
-                <input type='file' name='upload' id='upload'></input>
-              </label>
-            </div> */}
-            <button class='formbold-btn' onClick={handleOnSubmit}>
+            <button className='formbold-btn' type='submit'>
               Submit
             </button>
           </form>

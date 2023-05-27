@@ -16,8 +16,10 @@ import Box from './Components/Box.js';
 import Edit from './Components/Edit.js';
 import Adminreg from './pages/Adminadduser';
 import Loginpage from './pages/login_component';
+import ProfilePage from './pages/Profilepage';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 
 const isLoggedIn = window.localStorage.getItem('LoggedIn');
 
@@ -37,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: 'dashboard',
     element: < App/>,
+  },
+  {
+    path: 'profile',
+    element: <ProfilePage />,
   },
   {
     path: 'course',
