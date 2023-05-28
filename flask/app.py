@@ -8,6 +8,11 @@ def get_database():
     client = MongoClient(CONNECTION_STRING)
     return client['stud_info']
   
+def get_update_database():
+    CONNECTION_STRING = 'mongodb+srv://se_tech:se12345@se.wawkg12.mongodb.net/exp?retryWrites=true&w=majority'
+    client = MongoClient(CONNECTION_STRING)
+    return client['exp']
+  
 app = Flask(__name__)
 CORS(app)
 
@@ -58,9 +63,11 @@ def get_course_ids():
 def update_marks():
     name = request.args.get('name')
     marks = request.args.get('marks')
-    dbname = get_database()
-    collection_name = dbname["student_marks"]
-    collection_name.update_one({'name': name}, {'$set': {'marks': marks}}, upsert=True)
+    cid = request.args.get('cid')
+    dbname = get_update_database()
+    collection_name = dbname["users"]
+    collection_name.update_one({'email': name}, {'$set': {f'marks_{cid}': marks}}, upsert=True)
+    print("Marks updated successfully")
     return "Marks updated successfully"
 
 @app.route('/create', methods=['GET', 'POST'])

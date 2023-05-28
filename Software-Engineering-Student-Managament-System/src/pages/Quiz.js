@@ -1,9 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom'; // Import useParams
+import { useSearchParams } from 'react-router-dom';
 import '../Components/css/quiz.css';
 import MainLayout from '../Layout/MainLayout';
 
 function Quiz() {
+
+  const [userData, setUserData] = useState('');
+  useEffect(() => {
+    fetch('http://localhost:4000/userdata', {
+      method: 'POST',
+      crossDomain: true,
+      headers: {
+        'content-type': 'application/json',
+        Accept: 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({
+        token: window.localStorage.getItem('token'),
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data, 'UserData');
+        setUserData(data.data);
+      });
+  }, []);
+
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
@@ -11,10 +33,10 @@ function Quiz() {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const courseId  = searchParams.get("course_id"); // Get the courseId from the URL
+  const courseId = searchParams.get("course_id");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/data?course_id=${courseId}`) // Use the courseId in the fetch URL
+    fetch(`http://localhost:5000/data?course_id=${courseId}`)
       .then((res) => res.json())
       .then((data) => {
         const fetchedQuestions = data.map((question) => {
@@ -44,7 +66,23 @@ function Quiz() {
       setCurrentQuestion(nextQuestion);
     } else {
       setShowScore(true);
+      updateMarksOnServer();
     }
+  };
+
+  const updateMarksOnServer = () => {
+    const dummyUsername = userData.email;
+    const marks = score;
+    const cid = courseId;
+    const url = `http://localhost:5000/updateMarks?name=${dummyUsername}&marks=${marks}&cid=${cid}`;
+
+    fetch(url, { method: 'POST' })
+      .then((res) => {
+        // Handle the response if necessary
+      })
+      .catch((error) => {
+        console.error("Error updating marks:", error);
+      });
   };
 
   const handleRestartButtonClick = () => {
@@ -59,51 +97,49 @@ function Quiz() {
 
   return (
     <MainLayout>
-
-    <div className="quiz">
-      {showScore ? (
-        <div className="score-section">
-          <h2>Quiz Results</h2>
-          <p>You scored {score} out of {questions.length}.</p>
-          <p>
-            {score === questions.length
-              ? "Congratulations! You got all the questions right!"
-              : score >= questions.length / 2
-              ? "Well done! You got more than half the questions right."
-              : "Oops, you didn't get many questions right."}
-          </p>
-          <div className="button-section">
-            <button onClick={handleRestartButtonClick}>Restart Quiz</button>
-            <button onClick={handleExitButtonClick}>Exit Quiz</button>
-          </div>
-        </div>
-      ) : questions.length > 0 ? (
-        <>
-          <div className="question-section">
-            <div className="question-count">
-              <span>Question {currentQuestion + 1}</span>/{questions.length}
-            </div>
-            <div className="question-text">
-              {questions[currentQuestion].question}
+      <div className="quiz">
+        {showScore ? (
+          <div className="score-section">
+            <h2>Quiz Results</h2>
+            <p>You scored {score} out of {questions.length}.</p>
+            <p>
+              {score === questions.length
+                ? "Congratulations! You got all the questions right!"
+                : score >= questions.length / 2
+                ? "Well done! You got more than half the questions right."
+                : "Oops, you didn't get many questions right."}
+            </p>
+            <div className="button-section">
+              <button onClick={handleRestartButtonClick}>Restart Quiz</button>
+              <button onClick={handleExitButtonClick}>Exit Quiz</button>
             </div>
           </div>
-          <div className="answer-section">
-            {questions[currentQuestion].answers.map((answer) => (
-              <button
-                key={answer.text}
-                onClick={() => handleAnswerButtonClick(answer.correct)}
-              >
-                {answer.text}
-              </button>
-            ))}
-          </div>
-        </>
-      ) : (
-        <div>Loading questions...</div>
-      )}
-    </div>
+        ) : questions.length > 0 ? (
+          <>
+            <div className="question-section">
+              <div className="question-count">
+                <span>Question {currentQuestion + 1}</span>/{questions.length}
+              </div>
+              <div className="question-text">
+                {questions[currentQuestion].question}
+              </div>
+            </div>
+            <div className="answer-section">
+              {questions[currentQuestion].answers.map((answer) => (
+                <button
+                  key={answer.text}
+                  onClick={() => handleAnswerButtonClick(answer.correct)}
+                >
+                  {answer.text}
+                </button>
+              ))}
+            </div>
+          </>
+        ) : (
+          <div>Loading questions...</div>
+        )}
+      </div>
     </MainLayout>
-    
   );
 }
 
