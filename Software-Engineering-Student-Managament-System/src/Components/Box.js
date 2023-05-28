@@ -71,7 +71,7 @@ const Box = (props) => {
         </div>
 
         <div  className='gral' style={{ backgroundColor: '#transparent',boxShadow: "0px 5px 10px 0px rgba(0, 0, 0, 0.5)",color:'white' }}>
-        <iframe className="frame" src="https://charts.mongodb.com/charts-software-engineering-proj-czwdi/embed/charts?id=6444b048-81d6-4d8b-8df4-427b6851a73c&maxDataAge=3600&theme=dark&autoRefresh=true"></iframe>
+        <iframe className="frame" src={userData.graph}></iframe>
 
 
         </div>

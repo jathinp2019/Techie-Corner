@@ -1,6 +1,6 @@
 import React from 'react';
 import MainLayout from '../Layout/MainLayout'
-
+import { useState, useEffect } from 'react';
 import { AiFillEdit } from 'react-icons/ai';
 import {
   MDBCol,
@@ -21,7 +21,29 @@ import {
 } from 'mdb-react-ui-kit';
 
 export default function ProfilePage() {
+  const [userData, setUserData] = useState('');
+  useEffect(() => {
+    fetch('http://localhost:4000/userdata', {
+      method: 'POST',
+      crossDomain: true,
+      headers: {
+        'content-type': 'application/json',
+        Accept: 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({
+        token: window.localStorage.getItem('token'),
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data, 'UserData');
+        setUserData(data.data);
+      });
+  }, []);
+
   return (
+    
     <MainLayout>
         
     <section style={{ backgroundColor: 'transparent',boxShadow:"5px"}}>
@@ -35,15 +57,15 @@ export default function ProfilePage() {
             <MDBCard className="mb-4" >
               <MDBCardBody className="text-center square border border-info" >
                 <MDBCardImage
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                  src={userData.image}
                   alt="avatar"
                   className="rounded-circle"
                   style={{ width:'150px'}}
                   fluid />
                  
-                <p className="text-muted mb-4">Roll no</p>
-                <p className="text-muted mb-4">Sem</p>
-                <p className="text-muted mb-1">Branch</p>
+                <p className="text-muted mb-4">ROLL NO: {userData.RollNo}</p>
+                <p className="text-muted mb-4">SEM: {userData.sem}</p>
+                <p className="text-muted mb-1">BRANCH: {userData.branch}</p>
                
                 
               </MDBCardBody>
@@ -58,12 +80,12 @@ export default function ProfilePage() {
                   </MDBListGroupItem>
                   <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
                     <MDBIcon fab icon="github fa-lg" style={{ color: '#333333' }} />
-                    <MDBCardText>mdbootstrap</MDBCardText>
+                    <MDBCardText>{userData.git}</MDBCardText>
                   </MDBListGroupItem>
 
                   <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
                     <MDBIcon fab icon="fa fa-linkedin" style={{ color: '#3b5998' }} />
-                    <MDBCardText>mdbootstrap</MDBCardText>
+                    <MDBCardText>{userData.git}</MDBCardText>
                   </MDBListGroupItem>
                 </MDBListGroup>
               </MDBCardBody>
@@ -77,7 +99,7 @@ export default function ProfilePage() {
                     <MDBCardText>Full Name</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Name</MDBCardText>
+                    <MDBCardText className="text-muted">{userData.fname} {userData.lname}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 
@@ -86,7 +108,7 @@ export default function ProfilePage() {
                     <MDBCardText>Email</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">example@example.com</MDBCardText>
+                    <MDBCardText className="text-muted">{userData.email}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <br></br>   
@@ -95,7 +117,7 @@ export default function ProfilePage() {
                     <MDBCardText>Phone</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">8197246247</MDBCardText>
+                    <MDBCardText className="text-muted">{userData.Phone}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
     
@@ -104,7 +126,7 @@ export default function ProfilePage() {
                     <MDBCardText>Address</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Bay Area, San Francisco, CA</MDBCardText>
+                    <MDBCardText className="text-muted">{userData.address}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
               </MDBCardBody>
@@ -115,11 +137,11 @@ export default function ProfilePage() {
                 <MDBCard className="mb-4 mb-md-0 " >
                   <MDBCardBody className='square border border-info rounded-6'>
                     <MDBCardText className="mb-4"><span className="text-primary font-italic me-1" style={{textAlign:"center"}}>Parent Details</span> </MDBCardText>
-                    <p style={{color:"black"}}>Father's Name</p>
+                    <p style={{color:"black"}}>{userData.fnam}</p>
                     
-                    <p style={{color:"black"}}>Father's Contact</p>
-                    <p style={{color:"black"}}>Mother's Name</p>
-                    <p style={{color:"black"}}>Mother's Contact</p>
+                    <p style={{color:"black"}}>{userData.fnum}</p>
+                    <p style={{color:"black"}}>{userData.mnam}</p>
+                    <p style={{color:"black"}}>{userData.mnum}</p>
 
                   </MDBCardBody>
                 </MDBCard>
