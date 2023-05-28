@@ -16,8 +16,6 @@ app.use(cors())
 app.use(express.static("public"))
 app.use(express.json())
 
-
-
 app.post("/checkout", async (req, res) => {
 
     console.log(req.body)
@@ -47,7 +45,6 @@ const User = mongoose.model('users')
 
 mongoose.connect(mongoUrl, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
 })
     .then(() => {
         console.log('Success')
@@ -63,9 +60,9 @@ app.post('/adminpage', async (req, res) => {
             return res.send({ error: 'User Exists' })
         }
         await User.create({
-            fname: fname,
-            lname : lname,
-            email : email,
+            fname,
+            lname,
+            email,
             password: encrpytedPassword,
         })
         res.send({ status: 'ok' })

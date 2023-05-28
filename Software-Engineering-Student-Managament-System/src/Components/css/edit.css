@@ -1,14 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-  .formbold-form-wrapper {
-    margin: 100px auto;
-    height: 750px;
-    width: 800px;
-    background: white;
-    align-self:'center';
-    padding:50px 50px 50px 50px;
-    border-radius: 25px;
-  }
 
   .formbold-input-flex {
     display: flex;
