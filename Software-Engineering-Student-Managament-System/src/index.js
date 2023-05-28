@@ -18,6 +18,7 @@ import Adminreg from './pages/Adminadduser';
 import Loginpage from './pages/login_component';
 import ProfilePage from './pages/Profilepage';
 
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 
@@ -64,6 +65,7 @@ const router = createBrowserRouter([
     path: 'adminpage',
     element: <Adminreg />,
   },
+  
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
