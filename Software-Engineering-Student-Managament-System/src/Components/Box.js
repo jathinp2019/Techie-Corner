@@ -61,15 +61,34 @@ const Box = (props) => {
 
         <div className='box2' style={{ backgroundColor: 'transparent', boxShadow: "0px 5px 10px 0px rgba(0, 0, 0, 0.5)", color: 'white' }}>
           <span>
-            <h1 style={{ color: '#011409', textAlign: 'center' }}>Scores</h1>
+            <h1 style={{ color: '#011409', textAlign: 'center',marginLeft:"145px" }}>Scores</h1>
             <h1 style={{ fontSize: 50 }}>
 
               {/* <span style={{ fontSize: 40, color: 'white', fontWeight: 700 }}> */}
-              <span><h1>Semester - 5 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {userData.sem5}</h1> </span>
-              <span><h1>Sem-4 : {userData.sem4}</h1> </span>
-              <span><h1>Sem-3 : {userData.sem3}</h1> </span>
-              <span><h1>Sem-2 : {userData.sem2}</h1> </span>
-              <span><h1>Sem-1 : {userData.sem1}</h1> </span>
+             
+              <p></p>
+              <p></p>
+              <p />
+              <table className="score">
+              <tr >
+               <td className='score' style={{padding:"5px"}}><h1>19CSE303</h1> </td> 
+               <td className='score' style={{padding:"5px"}}><h1>{userData.marks_19CSE303}</h1></td>  
+               </tr>
+
+               <tr>
+               <td className='score' style={{padding:"5px"}}><h1>19CSE304</h1> </td> 
+               <td className='score' style={{padding:"5px"}}><h1>{userData.marks_19CSE304}</h1></td>  
+               </tr>
+
+               <tr>
+               <td className='score' style={{padding:"5px"}}><h1>19CSE305</h1> </td> 
+               <td className='score' style={{padding:"5px"}}><h1>{userData.marks_19CSE305}</h1></td>  
+               </tr>
+               
+              {/* <span><h1>19CSE304 : {userData.marks_19CSE304}</h1> </span>
+              <span><h1>19CSE305 : {userData.marks_19CSE305}</h1> </span> */}
+              </table>  
+              
 
               {/* </span> */}
             </h1>
@@ -78,13 +97,13 @@ const Box = (props) => {
 
         <div className='box3' style={{ backgroundColor: '#transparent', boxShadow: "0px 5px 10px 0px rgba(0, 0, 0, 0.5)", color: 'white' }}>
           <span>
-            <h1 style={{ textAlign: 'right', marginRight: 14, color: '#011409' }}>Attendance</h1>
+            <h1 style={{ textAlign: 'right', marginLeft: "130px", color: '#011409' }}>Attendance</h1>
             {/* {data} */}
             <CircularProgressBar></CircularProgressBar>
             <br></br>
             <p style={{ marginTop: -27 }}>
-              <span style={{ fontWeight: '500', marginTop: -10 }}>{totalattendance}</span>{' '}
-              classes Attended<br></br>
+              <span style={{ fontWeight: '500', marginTop: -10}}>{totalattendance}</span>
+              <span>classes Attended</span><br></br>
               <span style={{ fontWeight: '500' }}>300</span>  classes Conducted
             </p>
           </span>

@@ -7,6 +7,7 @@ import Box from "./Components/Box.js";
 import Course from "./Components/Course.js";
 import Loading from './Components/Loading.js';
 import ProfilePage from "./pages/Profilepage";
+import Text from "./Components/Text.js";
 
 
 const App = () => {

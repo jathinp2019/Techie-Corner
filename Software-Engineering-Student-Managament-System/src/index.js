@@ -17,6 +17,9 @@ import Edit from './Components/Edit.js';
 import Adminreg from './pages/Adminadduser';
 import Loginpage from './pages/login_component';
 import ProfilePage from './pages/Profilepage';
+import Text from './Components/Text.js';
+
+
 
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -60,6 +63,10 @@ const router = createBrowserRouter([
   {
     path: 'edit',
     element: <Edit />,
+  },
+  {
+    path: 'editor',
+    element: <Text />,
   },
   {
     path: 'adminpage',

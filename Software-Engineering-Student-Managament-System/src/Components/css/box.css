@@ -88,5 +88,12 @@ thead{text-align: center;}
   background-color: transparent;
   color:'white';
 }
+.score
+{
+  width:55px;
+  margin-left: 105px;
+    border: 5px solid black;
+}
+
 
   

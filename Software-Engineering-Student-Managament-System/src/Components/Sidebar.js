@@ -7,6 +7,8 @@ import { BsPersonCheckFill } from "react-icons/bs";
 import { FaBookOpen } from "react-icons/fa";
 import { AiFillEdit } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { TbNotes } from "react-icons/tb";
+
 import "./css/Sidebar.css";
 import Head from "./Header";
 import Quiz from "../pages/Quiz.js";
@@ -65,6 +67,12 @@ const Sidebar = () => {
                   <Link to="/edit" className="nav-link">
                     <AiFillEdit style={style} />
                     <span className="nav-link-name">Editor</span>
+                  </Link>
+
+                <br />
+                  <Link to="/editor" className="nav-link active">
+                    <TbNotes style={style} />
+                    <span className="nav-link-name">Text</span>
                   </Link>
                 </div>
               </div>
