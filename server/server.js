@@ -111,4 +111,21 @@ app.post('/userdata', async (req, res) => {
         
     }
 })
+const announcementSchema = new mongoose.Schema({
+  subject: 'string',
+  type: 'string',
+  date: Date,
+});
+
+const Announcement = mongoose.model('announcements', announcementSchema);
+
+app.post('/anndata', async (req, res) => {
+  try {
+    const announcementsData = await Announcement.find();
+    res.json({ status: "success", data: announcementsData });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ status: "error", message: "Failed to retrieve data" });
+  }
+});
 app.listen(4000, () => console.log("Listening on port 4000"))

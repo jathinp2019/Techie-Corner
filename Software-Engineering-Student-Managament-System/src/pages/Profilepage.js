@@ -75,17 +75,13 @@ export default function ProfilePage() {
               <MDBCardBody className="p-0 square border border-info rounded-6">
                 <MDBListGroup flush className="rounded-3">
                   <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fas icon="globe fa-lg text-warning" />
-                    <MDBCardText>https://profile.com</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
                     <MDBIcon fab icon="github fa-lg" style={{ color: '#333333' }} />
                     <MDBCardText>{userData.git}</MDBCardText>
                   </MDBListGroupItem>
 
                   <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
                     <MDBIcon fab icon="fa fa-linkedin" style={{ color: '#3b5998' }} />
-                    <MDBCardText>{userData.git}</MDBCardText>
+                    <MDBCardText>{userData.link}</MDBCardText>
                   </MDBListGroupItem>
                 </MDBListGroup>
               </MDBCardBody>
@@ -93,55 +89,43 @@ export default function ProfilePage() {
           </MDBCol>
           <MDBCol lg="8">
             <MDBCard className="mb-6 ">
-              <MDBCardBody className='square border border-info rounded-6'>
+            <MDBCardBody className="ps-4 border border-info rounded-6" >
                 <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Full Name</MDBCardText>
-                  </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{userData.fname} {userData.lname}</MDBCardText>
+                    <MDBCardText className="text-muted text-dark">Name : {userData.fname} {userData.lname}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
-                
+                <br/>
                 <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Email</MDBCardText>
-                  </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{userData.email}</MDBCardText>
+                    <MDBCardText className="text-muted text-dark">Email : {userData.email}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
-                <br></br>   
+              <br/>
                 <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Phone</MDBCardText>
-                  </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{userData.Phone}</MDBCardText>
+                    <MDBCardText className="text-muted text-dark">Phone : {userData.Phone}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
-    
+              <br/>
                 <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Address</MDBCardText>
-                  </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{userData.address}</MDBCardText>
+                    <MDBCardText className="text-muted text-dark">Address : {userData.address}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
-              </MDBCardBody>
+                </MDBCardBody>
             </MDBCard>
-
+            <br/>
             <MDBRow>
               <MDBCol md="6">
                 <MDBCard className="mb-4 mb-md-0 " >
                   <MDBCardBody className='square border border-info rounded-6'>
                     <MDBCardText className="mb-4"><span className="text-primary font-italic me-1" style={{textAlign:"center"}}>Parent Details</span> </MDBCardText>
-                    <p style={{color:"black"}}>{userData.fnam}</p>
+                    <p style={{color:"black"}}>Father's Name : {userData.fnam}</p>
                     
-                    <p style={{color:"black"}}>{userData.fnum}</p>
-                    <p style={{color:"black"}}>{userData.mnam}</p>
-                    <p style={{color:"black"}}>{userData.mnum}</p>
+                    <p style={{color:"black"}}>Father's Contact : {userData.fnum}</p>
+                    <p style={{color:"black"}}>Mother's Name : {userData.mnam}</p>
+                    <p style={{color:"black"}}>Mother's Contact {userData.mnum}</p>
 
                   </MDBCardBody>
                 </MDBCard>
