@@ -72,9 +72,15 @@ function PaymentPage() {
 
           <Container>
             
-            <section class="style-one">
+            {/* <section class="style-one">
               <div class="wordart">
                 <h1 class="preview" data-content="CodePen">Welcome To Payments Page</h1>
+              </div>
+            </section> */}
+            <div style={{marginRight:'380px'}}>
+            <section class="style-one">
+              <div class="wordart">
+                <h1 class="preview" data-content="CodePen" style={{marginLeft:'123px'}}>Welcome To Payments Page</h1>
               </div>
             </section>
             <Row xs={1} md={3} className='g-4'>
@@ -84,9 +90,10 @@ function PaymentPage() {
                 </Col>
               ))}
 
-
+                
 
             </Row>
+            </div>
           </Container>
         </div>
 
