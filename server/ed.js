@@ -103,6 +103,6 @@ app.post('/register', async (req, resp) => {
 });
 
 // Start the server
-app.listen(5000, () => {
-  console.log('App listening at port 5000');
+app.listen(8000, () => {
+  console.log('App listening at port 8000');
 });

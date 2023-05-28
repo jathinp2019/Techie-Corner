@@ -34,7 +34,7 @@ function Edit() {
   // }, []);
 
   useEffect(() => {
-    fetch('http://localhost:5000/getedit', {
+    fetch('http://localhost:8000/getedit', {
       method: 'POST',
       crossDomain: true,
       headers: {
@@ -65,7 +65,7 @@ function Edit() {
     e.preventDefault();
     var email = editData.email
     try {
-      const response = await fetch('http://localhost:5000/register', {
+      const response = await fetch('http://localhost:8000/register', {
         method: 'POST',
         body: JSON.stringify({
           email,
