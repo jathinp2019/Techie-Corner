@@ -1,9 +1,15 @@
-const mongoose = require('mongoose');
-const express = require('express');
-const cors = require('cors');
-const app = express();
-app.use(express.json());
-app.use(cors());
+const express = require('express')
+const mongoose = require('mongoose')
+var cors = require('cors')
+const stripe = require('stripe')('sk_test_51MrzASSAYLrAqiBDunzidLbjPsRp06Uzb6v4kkwDeIG3UzOiKsEKe2Vtud1tPTXZsy4oYXAQzza3uAd7EXROzc5U00XpqowSZ2')
+const mongoUrl = "mongodb+srv://se_tech:se12345@se.wawkg12.mongodb.net/exp?retryWrites=true&w=majority"
+const app = express()
+const jwt = require('jsonwebtoken')
+const JWT_SECRET = "dsdgassa121231wswewr!@$!@1dasda"
+const bcrypt = require('bcryptjs')
+app.use(cors())
+app.use(express.static("public"))
+app.use(express.json())
 
 // Now you can use the useremail variable in this file
 const sea='jathin@gmail.com'
@@ -31,7 +37,7 @@ const userSchema = new mongoose.Schema({
 });
 
 // Define the User model
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('user', userSchema);
 
 // Connect to the MongoDB database
 mongoose.connect('mongodb+srv://se_tech:se12345@se.wawkg12.mongodb.net/', {
@@ -39,6 +45,23 @@ mongoose.connect('mongodb+srv://se_tech:se12345@se.wawkg12.mongodb.net/', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
+app.post('/getedit', async (req, res) => {
+  const { token } = req.body
+  try {
+      const user = await jwt.verify(token, JWT_SECRET)
+      console.log(user)
+      const useremail = user.email
+      User.findOne({ email: useremail }).then((data) => {
+          res.send({ status: "ok", data: data })
+      }).catch((err) => {
+          res.send({ status: "error", error: err })
+      })
+
+  } catch (error) {
+      
+  }
+})
 
 // Fetch the User document with the provided email
 app.get('/user', async (req, resp) => {
@@ -57,7 +80,7 @@ app.get('/user', async (req, resp) => {
 // Update the user data in the database
 app.post('/register', async (req, resp) => {
   try {
-    const user = await User.findOne({ email: 'jathin@gmail.com' });
+    const user = await User.findOne({ email: req.body.email });
     if (user) {
       user.fnum = req.body.fnum || user.fnum;
       user.address = req.body.address || user.address;

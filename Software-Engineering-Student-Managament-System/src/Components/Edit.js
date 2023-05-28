@@ -11,33 +11,64 @@ function Edit() {
   const [image, setImage] = useState('');
   const [Phone, setPhone] = useState('');
 
+  const [editData, setEditData] = useState('');
+  
+  // useEffect(() => {
+  //   fetch('http://localhost:5000/editdata', {
+  //     method: 'POST',
+  //     crossDomain: true,
+  //     headers: {
+  //       'content-type': 'application/json',
+  //       Accept: 'application/json',
+  //       'Access-Control-Allow-Origin': '*',
+  //     },
+  //     body: JSON.stringify({
+  //       token: window.localStorage.getItem('token'),
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data, 'UserData');
+  //       setEditData(data.data);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/user');
-        const userData = await response.json();
-
-        setFnum(userData.fnum);
-        setAddress(userData.address);
-        setGit(userData.git);
-        setLink(userData.link);
-        setMnum(userData.mnum);
-        setImage(userData.image);
-        setPhone(userData.Phone);
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
-
-    fetchData();
+    fetch('http://localhost:5000/getedit', {
+      method: 'POST',
+      crossDomain: true,
+      headers: {
+        'content-type': 'application/json',
+        Accept: 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({
+        token: window.localStorage.getItem('token'),
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data, 'EditData');
+        setFnum(data.data.fnum);
+        setAddress(data.data.address);
+        setGit(data.data.git);
+        setLink(data.data.link);
+        setMnum(data.data.mnum);
+        setImage(data.data.image);
+        setPhone(data.data.Phone);
+        setEditData(data.data);
+      });
   }, []);
+
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+    var email = editData.email
     try {
       const response = await fetch('http://localhost:5000/register', {
         method: 'POST',
         body: JSON.stringify({
+          email,
           fnum,
           address,
           git,
