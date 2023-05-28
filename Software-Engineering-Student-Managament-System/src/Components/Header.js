@@ -51,13 +51,13 @@ const Header = () => {
   }, []);
   const [data, setData] = useState('');
 
-  const getData = async () => {
-    const response = await Axios.get('http://localhost:3000/getData');
-    setData(response.data);
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+  // const getData = async () => {
+  //   const response = await Axios.get('http://localhost:3000/getData');
+  //   setData(response.data);
+  // };
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -106,7 +106,7 @@ const Header = () => {
             display: 'inline-block',
           }}
         >
-          <h2>{userData.fname}</h2>
+          <h2>{userData.fname} {userData.lname}</h2>
           {/* {data[2]} */}
         </span>
         <div style={{ position: 'relative' }}>

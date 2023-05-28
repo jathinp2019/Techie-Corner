@@ -7,7 +7,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 var cors = require('cors')
 const stripe = require('stripe')('sk_test_51MrzASSAYLrAqiBDunzidLbjPsRp06Uzb6v4kkwDeIG3UzOiKsEKe2Vtud1tPTXZsy4oYXAQzza3uAd7EXROzc5U00XpqowSZ2')
-const mongoUrl = "mongodb+srv://se_tech:se12345@se.wawkg12.mongodb.net/?retryWrites=true&w=majority"
+const mongoUrl = "mongodb+srv://se_tech:se12345@se.wawkg12.mongodb.net/exp?retryWrites=true&w=majority"
 const app = express()
 const jwt = require('jsonwebtoken')
 const JWT_SECRET = "dsdgassa121231wswewr!@$!@1dasda"
@@ -15,6 +15,8 @@ const bcrypt = require('bcryptjs')
 app.use(cors())
 app.use(express.static("public"))
 app.use(express.json())
+
+
 
 app.post("/checkout", async (req, res) => {
 
@@ -41,10 +43,11 @@ app.post("/checkout", async (req, res) => {
 
 })
 require('./userDetails')
-const User = mongoose.model('UserInfo')
+const User = mongoose.model('users')
 
 mongoose.connect(mongoUrl, {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
 })
     .then(() => {
         console.log('Success')
@@ -60,9 +63,9 @@ app.post('/adminpage', async (req, res) => {
             return res.send({ error: 'User Exists' })
         }
         await User.create({
-            fname,
-            lname,
-            email,
+            fname: fname,
+            lname : lname,
+            email : email,
             password: encrpytedPassword,
         })
         res.send({ status: 'ok' })
