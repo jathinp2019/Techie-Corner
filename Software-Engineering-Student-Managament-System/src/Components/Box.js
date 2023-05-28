@@ -8,20 +8,31 @@ import Backgroundvideo from "./images/Backgroundvideo.mp4"
 
 
 const Box = (props) => {
-  // const [data,setData]=useState("");
-
-  //   const getData=async() => {
-  //     const r1   = await Axios.get("http://localhost:3000/getData");
-  //     setData(r1.data);
-  //   }
-  //   useEffect(() => {
-  //     getData()
-  //   },[]);
-
-  //   console.log("aaaass ",data[1])
+  const [userData, setUserData] = useState('');
+  useEffect(() => {
+    fetch('http://localhost:4000/userdata', {
+      method: 'POST',
+      crossDomain: true,
+      headers: {
+        'content-type': 'application/json',
+        Accept: 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({
+        token: window.localStorage.getItem('token'),
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data, 'UserData');
+        setUserData(data.data);
+      });
+  }, []);
   let Subject = ['Cloud', 'SE', 'PPL', 'DS']
   let Event = ['Lab', 'Sprint 1', 'Assignment', 'Case Study']
   let Deadline = ['25 April', '27 April', '29 April', '2 May']
+  const totalattendance = userData.att_c1 + userData.att_c2 + userData.att_c3
+  
   // console.log(data)
   return (
     <MainLayout >
@@ -30,40 +41,18 @@ const Box = (props) => {
         
         <div  className='box2' style={{ backgroundColor: 'transparent',boxShadow: "0px 5px 10px 0px rgba(0, 0, 0, 0.5)" ,color:'white'}}>
           <span>
-            <h1 style={{ color: '#011409', textAlign: 'center' }}>Payments</h1>
+            <h1 style={{ color: '#011409', textAlign: 'center' }}>Scores</h1>
             <h1 style={{ fontSize: 50 }}>
-              <FaRupeeSign
-                style={{ fontSize: 40, color: 'white', fontWeight: 700 }}
-              ></FaRupeeSign>
-              <span style={{ fontSize: 40, color: 'white', fontWeight: 700 }}>
-                300
-              </span>
+
+              {/* <span style={{ fontSize: 40, color: 'white', fontWeight: 700 }}> */}
+                <span><h1>Semester - 5 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {userData.sem5}</h1> </span>
+                <span><h1>Sem-4 : {userData.sem4}</h1> </span>
+                <span><h1>Sem-3 : {userData.sem3}</h1> </span>
+                <span><h1>Sem-2 : {userData.sem2}</h1> </span>
+                <span><h1>Sem-1 : {userData.sem1}</h1> </span>
+
+              {/* </span> */}
             </h1>
-            <p style={{ fontSize: 25 }}>wallet balance</p>
-            <p style={{ fontSize: 25 }}>
-              <FaRupeeSign
-                style={{ fontSize: 40, color: 'white', fontWeight: 700 }}
-              ></FaRupeeSign>
-              <span>
-                {' '}
-                <span style={{ fontSize: 40, color: 'white', fontWeight: 700 }}>
-                  300{' '}
-                </span>{' '}
-                Previous Month Expenditure
-              </span>{' '}
-            </p>
-            <p style={{ fontSize: 25 }}>
-              <FaRupeeSign
-                style={{ fontSize: 40, color: 'white', fontWeight: 700 }}
-              ></FaRupeeSign>
-              <span>
-                {' '}
-                <span style={{ fontSize: 40, color: 'white', fontWeight: 700 }}>
-                  300{' '}
-                </span>{' '}
-                Most Recent Transaction
-              </span>{' '}
-            </p>
           </span>
         </div>
 
@@ -74,9 +63,9 @@ const Box = (props) => {
             <CircularProgressBar></CircularProgressBar>
             <br></br>
             <p style={{ marginTop: -27 }}>
-              <span style={{ fontWeight: '500', marginTop: -10 }}>129</span>{' '}
+              <span style={{ fontWeight: '500', marginTop: -10 }}>{totalattendance}</span>{' '}
                classes Attended<br></br>
-              <span style={{ fontWeight: '500' }}>168</span>  classes Conducted
+              <span style={{ fontWeight: '500' }}>300</span>  classes Conducted
             </p>
           </span>
         </div>

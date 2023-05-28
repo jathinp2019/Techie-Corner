@@ -24,7 +24,7 @@ export default class Adminreg extends Component {
                 "Access-Control-Allow-Origin": "*",
             },
             body: JSON.stringify({
-                fname: this.fname,
+                fname,
                 lname,
                 email,
                 password,

@@ -107,11 +107,10 @@ const Header = () => {
           }}
         >
           <h2>{userData.fname} {userData.lname}</h2>
-          {/* {data[2]} */}
         </span>
         <div style={{ position: 'relative' }}>
           <img
-            src={data[5]}
+            src={userData.image}
             alt='Header Image'
             onClick={handleImageClick}
             style={{ cursor: 'pointer' }}
