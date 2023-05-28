@@ -34,39 +34,39 @@ const router = createBrowserRouter([
   },
   {
     path: 'payment',
-    element: <PaymentPage />,
+    element: isLoggedIn === 'true' ? <PaymentPage /> : <Loginpage />,
   },
   {
     path: 'quiz',
-    element: < Quiz/>,
+    element: isLoggedIn === 'true' ? <Quiz /> : <Loginpage />
   },
   {
     path: 'dashboard',
-    element: < App/>,
+    element: isLoggedIn === 'true' ? <App /> : <Loginpage />
   },
   {
     path: 'profile',
-    element: <ProfilePage />,
+    element: isLoggedIn === 'true' ? <ProfilePage /> : <Loginpage />
   },
   {
     path: 'course',
-    element: < Course/>,
+    element: isLoggedIn === 'true' ? <Course /> : <Loginpage />
   },
   {
     path: 'success',
-    element: <Success />,
+    element: isLoggedIn === 'true' ? <Success /> : <Loginpage />
   },
   {
     path: 'cancel',
-    element: <Cancel />,
+    element: isLoggedIn === 'true' ? <Cancel /> : <Loginpage />
   },
   {
     path: 'edit',
-    element: <Edit />,
+    element: isLoggedIn === 'true' ? <Edit /> : <Loginpage />
   },
   {
     path: 'editor',
-    element: <Text />,
+    element: isLoggedIn === 'true' ? <Text /> : <Loginpage />
   },
   {
     path: 'adminpage',
