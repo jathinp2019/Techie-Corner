@@ -40,11 +40,11 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('user', userSchema);
 
 // Connect to the MongoDB database
-mongoose.connect('mongodb+srv://se_tech:se12345@se.wawkg12.mongodb.net/', {
-  dbName: 'exp',
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// mongoose.connect('mongodb+srv://se_tech:se12345@se.wawkg12.mongodb.net/', {
+//   dbName: 'exp',
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 app.post('/getedit', async (req, res) => {
   const { token } = req.body
@@ -106,3 +106,4 @@ app.post('/register', async (req, resp) => {
 app.listen(8000, () => {
   console.log('App listening at port 8000');
 });
+module.exports = app; 

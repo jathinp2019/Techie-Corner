@@ -43,13 +43,13 @@ app.post("/checkout", async (req, res) => {
 require('./userDetails')
 const User = mongoose.model('users')
 
-mongoose.connect(mongoUrl, {
-    useNewUrlParser: true,
-})
-    .then(() => {
-        console.log('Success')
-    })
-    .catch((e) => console.log(e))
+// mongoose.connect(mongoUrl, {
+//     useNewUrlParser: true,
+// })
+//     .then(() => {
+//         console.log('Success')
+//     })
+//     .catch((e) => console.log(e))
 
 app.post('/adminpage', async (req, res) => {
     const { fname, lname, email, password } = req.body
@@ -129,3 +129,4 @@ app.post('/anndata', async (req, res) => {
   }
 });
 app.listen(4000, () => console.log("Listening on port 4000"))
+module.exports = app; 

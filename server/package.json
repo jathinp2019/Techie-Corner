@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npm run server & npm run ed",
     "server1": "nodemon server.js",
-    "server2": "nodemon ed.js"
+    "server2": "nodemon ed.js",
+    "combined": "nodemon combined.js"
   },
   "keywords": [],
   "author": "",
